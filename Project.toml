@@ -1,0 +1,13 @@
+name = "Ecosystem"
+uuid = "b70e047c-a062-4cac-a264-0d0e59158268"
+authors = ["kozvojtex <vojtech.kozel.cz@gmail.com>"]
+version = "0.1.0"
+
+[deps]
+StatsBase = "2913bbd2-ae8a-5f71-8c99-4fb6c76f3a91"
+
+[extras]
+Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
+
+[targets]
+test = ["Test"]
