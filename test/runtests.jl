@@ -26,8 +26,7 @@ using Ecosystem
     for (k,_) in res
         @test res[k] ≈ tst[k]
     end
-    @test eats(sheep1, grass1) == true
-    @test eats(sheep1, wolf1) == false
-    @test eats(wolf1, mushroom) == false
-    @test eats(wolf1, sheep1) == true
 end
+
+# every_nth tests
+include("every_nth.jl")
