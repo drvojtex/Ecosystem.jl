@@ -9,6 +9,8 @@ using Test
                 for mm=1:rand(1:1000)
                     sheep  = Animal{Sheep, Female}(1, e, dE, 1, 1)
                     mushroom = Mushroom(2, ms, mm)
+                    @test size(mushroom) == ms
+                    @test max_size(mushroom) == mm
                     world = World([sheep, mushroom])
                     eat!(sheep, mushroom, world);
                     @test size(world.agents[2]) == 0
