@@ -30,3 +30,4 @@ end
 
 # every_nth tests
 include("every_nth.jl")
+include("mushroom.jl")
