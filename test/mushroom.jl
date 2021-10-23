@@ -3,10 +3,10 @@ using Ecosystem
 using Test
 
 @testset "every_nth" begin
-    for dE=1:rand(1:1000)
-        for e=1:rand(1:1000)
-            for ms=1:rand(1:1000)
-                for mm=1:rand(1:1000)
+    for dE=1:rand(1:10)
+        for e=1:rand(1:10)
+            for ms=1:rand(1:10)
+                for mm=1:rand(1:10)
                     sheep  = Animal{Sheep, Female}(1, e, dE, 1, 1)
                     mushroom = Mushroom(2, ms, mm)
                     @test mushroom.size == ms
