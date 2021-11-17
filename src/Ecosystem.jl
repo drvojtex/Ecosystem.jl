@@ -11,7 +11,8 @@ export Agent, Plant, Animal
 export agent_step!, eat!, eats, find_food, reproduce!, world_step!
 export energy, energy!, incr_energy!, Δenergy, reprprob, foodprob, decr_energy!
 export every_nth, agent_count, simulate!
-
+export default_config, _add_agents, _ecosystem
+export @add, @ecosystem
 
 ##################################################################
 # ECOSYSTEMCORE
@@ -35,6 +36,8 @@ include("world.jl")
 include("plant.jl")
 include("animal.jl")
 include("mashroom.jl")
+include("macros.jl")
+
 
 ##################################################################
 

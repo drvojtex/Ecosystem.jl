@@ -1,7 +1,4 @@
 
-using Ecosystem
-using Test
-
 @testset "every_nth" begin
     max_i = 2000
     max_j = 2000

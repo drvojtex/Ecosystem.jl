@@ -1,7 +1,4 @@
 
-using Ecosystem
-using Test
-
 @testset "mushroom" begin
     for dE=1:rand(1:10)
         for e=1:rand(1:10)
