@@ -2,6 +2,8 @@ mutable struct Plant{P<:PlantSpecies} <: Agent{P}
     id::Int
     size::Int
     max_size::Int
+    Plant{P}(id, s, ms) where {P<:PlantSpecies} = 
+        0 <= s <= ms ? new(id, s, ms) : throw(MethodError)
 end
  
 Base.size(a::Plant) = a.size

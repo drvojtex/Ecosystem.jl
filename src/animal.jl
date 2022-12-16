@@ -4,6 +4,8 @@ mutable struct Animal{A<:AnimalSpecies,S<:Sex} <: Agent{A}
     Δenergy::Float64
     reprprob::Float64
     foodprob::Float64
+    Animal{A, S}(id, e, de, r, f) where {A<:AnimalSpecies, S<:Sex} = 
+        all([0 < r <= 1, 0 < f <= 1]) ? new(id, e, de, r, f) : throw(MethodError)
 end
  
 energy(a::Animal) = a.energy
@@ -68,13 +70,16 @@ end
  
 find_mate(a::Animal, w::World) = find_rand(x->mates(a,x),w)
  
-function mates(a,b)
+function mates(_, _)
     error("""You have to specify the mating behaviour of your agents by overloading `EcosystemCore.mates` e.g. like this:
         EcosystemCore.mates(a::Animal{S,Female}, b::Animal{S,Male}) where S<:Species = true
         EcosystemCore.mates(a::Animal{S,Male}, b::Animal{S,Female}) where S<:Species = true
         EcosystemCore.mates(a::Agent, b::Agent) = false
     """)
 end
+mates(a::Animal{S,Female}, b::Animal{S,Male}) where S<:Species = true
+mates(a::Animal{S,Male}, b::Animal{S,Female}) where S<:Species = true
+mates(a::Agent, b::Agent) = false
  
 kill_agent!(a::Animal, w::World) = delete!(w.agents, id(a))
  
