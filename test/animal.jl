@@ -46,7 +46,7 @@ function convertor(v::NTuple{7, Int64})
     CreateAnimal(d)
 end
 
-@testset "animal" begin
+@testset "animal: creating combinations" begin
     gc::Vector{NTuple{7, Int64}} = generate_combinations()
     for c::NTuple{7, Int64} in gc
         if convertor_bv(c)
@@ -55,4 +55,19 @@ end
             @test convertor(c) == Nothing
         end
     end
+end
+
+@testset "animal: special occurences" begin
+    @test CreateAnimal(Dict(:A => :Grass, :S => :Male, 
+        :id => 1, :energy => 1, :Δenergy => 1, :reprprob => 0.8, :foodprob => 0.8)
+    ) == Nothing
+    @test CreateAnimal(Dict(:A => :Sheep, :S => :Grass, 
+        :id => 1, :energy => 1, :Δenergy => 1, :reprprob => 0.8, :foodprob => 0.8)
+    ) == Nothing
+
+    sheep1 = Sheep(1, 1, 1, 0.8, 0.8)
+    @test typeof(sheep1).parameters[2] ∈ [Female, Male]
+    incr_energy!(sheep1, Δenergy(sheep1))
+    @test [energy(sheep1), Δenergy(sheep1), reprprob(sheep1), foodprob(sheep1)
+        ] == [2, 1, 0.8, 0.8]
 end

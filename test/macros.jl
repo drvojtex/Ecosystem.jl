@@ -18,3 +18,22 @@
         Animal{Sheep, Male} => 22
     )
 end
+#=
+
+macro test_macro_throws(err_type, ex)
+    return quote
+        @test_throws(
+            $(esc(err_type)),
+            try
+                @eval $(esc(ex))
+            catch err
+                @show err
+                throw(err.error)
+            end
+        )
+    end
+end
+
+@test (@ecosystem begin @add 1 Grass end) != Nothing
+@test_macro_throws MethodError (@ecosystem begin @add "1" Grass end)
+=#
