@@ -1,3 +1,17 @@
+
+function test_animal_params(id, energy, Δenergy, reprprob, foodprob)
+    if any(x -> !(typeof(x) <: Number), [energy, Δenergy, reprprob, foodprob]) ||
+        !(typeof(id) <: Integer)
+        return false
+    elseif !all([
+        0 < reprprob <= 1, 0 < foodprob <= 1, 
+        0 < energy, 0 < Δenergy
+        ])
+        return false
+    end
+    return true
+end
+
 mutable struct Animal{A<:AnimalSpecies,S<:Sex} <: Agent{A}
     id::Int
     energy::Float64
@@ -5,9 +19,21 @@ mutable struct Animal{A<:AnimalSpecies,S<:Sex} <: Agent{A}
     reprprob::Float64
     foodprob::Float64
     Animal{A, S}(id, e, de, r, f) where {A<:AnimalSpecies, S<:Sex} = 
-        all([0 < r <= 1, 0 < f <= 1]) ? new(id, e, de, r, f) : throw(MethodError)
+        test_animal_params(id, e, de, r, f) ? 
+            new(id, e, de, r, f) : Nothing
 end
  
+function CreateAnimal(d::Dict)
+    if !(isdefined(Ecosystem, d[:A]) && isdefined(Ecosystem, d[:S]))
+        return Nothing
+    elseif eval(d[:A])<:AnimalSpecies && eval(d[:S])<:Sex
+        return Animal{eval(d[:A]), eval(d[:S])}(
+            d[:id], d[:energy], d[:Δenergy], d[:reprprob], d[:foodprob]
+        )
+    end
+    return Nothing
+end
+
 energy(a::Animal) = a.energy
 Δenergy(a::Animal) = a.Δenergy
 reprprob(a::Animal) = a.reprprob

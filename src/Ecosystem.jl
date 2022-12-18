@@ -13,6 +13,7 @@ export energy, energy!, incr_energy!, Δenergy, reprprob, foodprob, decr_energy!
 export every_nth, agent_count, simulate!
 export default_config, _add_agents, _ecosystem
 export @add, @ecosystem
+export CreateAnimal, CreatePlant
 
 ##################################################################
 # ECOSYSTEMCORE
