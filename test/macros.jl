@@ -1,5 +1,5 @@
 
-@testset "macros" begin
+@testset "macros: behaviour" begin
     macro_world = @ecosystem begin
         @add 11 Sheep Female
         @add 22 Sheep Male 
@@ -18,7 +18,6 @@
         Animal{Sheep, Male} => 22
     )
 end
-#=
 
 macro test_macro_throws(err_type, ex)
     return quote
@@ -34,6 +33,10 @@ macro test_macro_throws(err_type, ex)
     end
 end
 
-@test (@ecosystem begin @add 1 Grass end) != Nothing
-@test_macro_throws MethodError (@ecosystem begin @add "1" Grass end)
-=#
+@testset "macros: error input count" begin
+    @test_macro_throws MethodError (@ecosystem begin @add "1" Grass end)
+    @test_macro_throws MethodError (@ecosystem begin @add "1" Sheep end)    
+    @test_macro_throws MethodError (@ecosystem begin @add "1" Sheep Female end)
+    @test_macro_throws MethodError (@ecosystem begin @add "1" Wolf Male end)
+    @test_macro_throws MethodError (@ecosystem begin @add "1" Mushroom end)
+end
