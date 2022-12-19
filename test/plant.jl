@@ -35,7 +35,7 @@ function convertor(v::NTuple{4, Int64})
     CreatePlant(d)
 end
 
-@testset "plant" begin
+@testset "plant: boundaries" begin
     gc::Vector{NTuple{4, Int64}} = generate_combinations()
     for c::NTuple{4, Int64} in gc
         if convertor_bv(c)
@@ -44,4 +44,8 @@ end
             @test convertor(c) == Nothing
         end
     end
+end
+
+@testset "grass: show" begin
+    @test (@capture_out Base.show(Grass)) == "🌿"
 end
