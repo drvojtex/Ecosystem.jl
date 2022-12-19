@@ -88,8 +88,9 @@ end
 end
 
 @testset "animal: shows" begin
-    @test (@capture_out print(Sheep)) == "🐑"
-    @test (@capture_out print(Wolf)) == "🐺"
-    @test (@capture_out print(Male)) == "♂"
-    @test (@capture_out print(Female)) == "♀"
+    @test (@capture_out Base.show(Sheep)) == "🐑"
+    @test (@capture_out Base.show(Wolf)) == "🐺"
+    @test (@capture_out Base.show(Male)) == "♂"
+    @test (@capture_out Base.show(Female)) == "♀"
+    @test (@capture_out Base.show(Animal{Wolf, Male}(6, 1, 1, 1.0, 1.0))) == "🐺♂ #6 E=1.0 ΔE=1.0 pr=1.0 pf=1.0"
 end
