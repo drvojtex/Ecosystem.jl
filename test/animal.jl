@@ -1,5 +1,6 @@
 
 using Distributions, Random
+using Suppressor
 
 
 """
@@ -73,13 +74,22 @@ end
 end
 
 @testset "animal: world interactions" begin
-    sheep1 = Sheep(1, 1, 1, 0.8, 0.1)
-    sheep2 = Sheep(2, 1, 1, 0.8, 0.1)
-    sheep3 = Sheep(3, 1, 1, 0.8, 1.0)
+    sheep1 = Sheep(1, 1, 1, 0.1, 0.1)
+    sheep2 = Sheep(2, 1, 1, 0.1, 0.1)
+    sheep3 = Sheep(3, 1, 1, 0.1, 1.0)
     grass1 = Grass(4, 1, 2)
     wolf1 = Animal{Wolf, Female}(5, 1, 1, 1.0, 1.0)
     wolf2 = Animal{Wolf, Male}(6, 1, 1, 1.0, 1.0)
     world = World([sheep1, sheep2, sheep3, grass1, wolf1, wolf2])
+    agent_step!(sheep3, world)
     agent_step!(wolf1, world)
     @test typeof(world.agents[7]) <: Animal{Wolf}
+    @test size(world.agents[4]) == 0
+end
+
+@testset "animal: shows" begin
+    @test (@capture_out print(Sheep)) == "🐑"
+    @test (@capture_out print(Wolf)) == "🐺"
+    @test (@capture_out print(Male)) == "♂"
+    @test (@capture_out print(Female)) == "♀"
 end
