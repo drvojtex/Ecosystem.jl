@@ -71,3 +71,15 @@ end
     @test [energy(sheep1), Δenergy(sheep1), reprprob(sheep1), foodprob(sheep1)
         ] == [2, 1, 0.8, 0.8]
 end
+
+@testset "animal: world interactions" begin
+    sheep1 = Sheep(1, 1, 1, 0.8, 0.1)
+    sheep2 = Sheep(2, 1, 1, 0.8, 0.1)
+    sheep3 = Sheep(3, 1, 1, 0.8, 1.0)
+    grass1 = Grass(4, 1, 2)
+    wolf1 = Animal{Wolf, Female}(5, 1, 1, 1.0, 1.0)
+    wolf2 = Animal{Wolf, Male}(6, 1, 1, 1.0, 1.0)
+    world = World([sheep1, sheep2, sheep3, grass1, wolf1, wolf2])
+    agent_step!(wolf1, world)
+    @test typeof(world.agents[7]) <: Animal{Wolf}
+end
