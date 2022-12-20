@@ -15,4 +15,5 @@ include("agent_count.jl")
 include("mushroom.jl")
 # macros tests
 include("macros.jl")
-
+# world simulation
+include("worlds.jl")
