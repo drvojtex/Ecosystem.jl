@@ -44,8 +44,17 @@ end
             @test convertor(c) == Nothing
         end
     end
+    @test CreatePlant(Dict(:P=>:Sheep, :id=>1, :size=>1, :max_size=>1)) == Nothing
+end
+
+@testset "grass: behaviour" begin
+    grass1 = Grass(1, 2)
+    world = World([grass1])
+    world_step!(world)
+    @test agent_count(grass1) == 1
 end
 
 @testset "grass: show" begin
     @test (@capture_out Base.show(Grass)) == "🌿"
+    @test (@capture_out Base.show(Plant{Grass}(1, 1, 2))) == "🌿  #1 50% grown"
 end

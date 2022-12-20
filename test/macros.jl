@@ -26,7 +26,6 @@ macro test_macro_throws(err_type, ex)
             try
                 @eval $(esc(ex))
             catch err
-                @show err
                 throw(err.error)
             end
         )

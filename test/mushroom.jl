@@ -34,4 +34,5 @@ end
 
 @testset "mushroom: show" begin
     @test (@capture_out Base.show(Mushroom)) == "🍄"
+    @test (@capture_out Base.show(Plant{Mushroom}(1, 1, 2))) == "🍄  #1 50% grown"
 end
