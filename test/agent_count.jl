@@ -1,4 +1,6 @@
 
+using Suppressor
+
 @testset "agent_count: boundary values" begin
     @test agent_count(Grass(1,1,5)) ≈ 0.2
     @test_throws MethodError agent_count("asd")
@@ -46,9 +48,7 @@ end
     mushroom = Mushroom(7, 4, 5)
     world  = World([sheep1, sheep2, grass1, grass2, wolf1, wolf2, mushroom])
 
-    @test ((@capture_out Base.show(Grass)) 
-        ==
-    """
+    out = """
     World{Agent}
     🐺♂ #5 E=2.0 ΔE=1.0 pr=0.3 pf=0.5
     🐑♂ #4 E=1.0 ΔE=1.0 pr=0.5 pf=0.8
@@ -57,5 +57,8 @@ end
     🌿  #2 40% grown
     🐑♀ #3 E=1.0 ΔE=1.0 pr=0.5 pf=0.9
     🌿  #1 20% grown
-    """)
+    """
+
+    @test (replace((@capture_out Base.show(world)), " "=>"")
+        == replace((@capture_out print(out)), " "=>""))
 end
