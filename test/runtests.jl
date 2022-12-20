@@ -16,4 +16,4 @@ include("mushroom.jl")
 # macros tests
 include("macros.jl")
 # world simulation
-include("worlds.jl")
+include("world.jl")

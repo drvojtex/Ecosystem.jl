@@ -50,10 +50,9 @@ end
 @testset "grass: behaviour" begin
     grass1 = Grass(1, 3)
     world = World([grass1])
-    world_step!(world)
-    @test agent_count(grass1) == 2/3
-    agent_step!(grass1, world)
-    @test agent_count(grass1) == 3/3
+    @test_nowarn agent_step!(grass1, world)
+    @test_nowarn world_step!(world)
+    @test agent_count(grass1) == 1
 end
 
 @testset "grass: show" begin
