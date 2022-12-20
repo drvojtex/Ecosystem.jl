@@ -2,7 +2,7 @@
 function test_plant_params(id, size, max_size)
     if any(x -> !(typeof(x) <: Integer), [id, size, max_size])
         return false
-    elseif !all([0 < size, 0 < max_size])
+    elseif any([0 < size, 0 < max_size])
         return false
     end
     return true
