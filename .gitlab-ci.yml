@@ -1,0 +1,8 @@
+test-job: 
+  stage: test
+  script:
+    - /Users/drvojtex/julia-1.8.3/bin/julia -e 'using Pkg; Pkg.activate("."); Pkg.test("Ecosystem"; coverage = true)'
+    - /Users/drvojtex/julia-1.8.3/bin/julia -e 'using Pkg; Pkg.activate("."); 
+        Pkg.add("Coverage"); 
+        using Coverage; cl, tl = get_summary(process_folder()); 
+        println("(", cl/tl*100, "%) covered");'
