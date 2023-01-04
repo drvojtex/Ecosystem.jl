@@ -17,3 +17,7 @@ include("mushroom.jl")
 include("macros.jl")
 # world simulation
 include("world.jl")
+# tdl
+include("tdl-define.jl")
+include("tdl-behaviour.jl")
+include("tdl-reproduction.jl")

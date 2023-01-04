@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<graph description="" id="5" linkage="" name="g" type="ORIENTED_GRAPH" version="">
+    <node description="" height="25.0" id="58" name="START" priority="" style="STYLE_START" width="70.0" xpos="220.0" ypos="40.0"/>
+    <edge description="" id="60" name="1" priority="" source="58" target="59"/>
+    <node description="" height="40.0" id="59" name="create_ecosystem" priority="(not defined)" style="STYLE_NODE" width="40.0" xpos="240.0" ypos="100.0"/>
+    <edge description="" id="64" name="2" priority="" source="59" target="61"/>
+    <edge description="" id="65" name="3" priority="" source="59" target="62"/>
+    <node description="" height="40.0" id="61" name="reproduce_any_wolf" priority="(not defined)" style="STYLE_NODE" width="40.0" xpos="170.0" ypos="180.0"/>
+    <edge description="" id="69" name="7" priority="" source="61" target="62"/>
+    <edge description="" id="70" name="8" priority="" source="61" target="63"/>
+    <node description="" height="40.0" id="62" name="reproduce_any_sheep" priority="(not defined)" style="STYLE_NODE" width="40.0" xpos="310.0" ypos="180.0"/>
+    <edge description="" id="66" name="4" priority="" source="62" target="63"/>
+    <edge description="" id="68" name="6" priority="" source="62" target="61"/>
+    <node description="" height="40.0" id="63" name="agent_count" priority="(not defined)" style="STYLE_NODE" width="40.0" xpos="240.0" ypos="260.0"/>
+</graph>

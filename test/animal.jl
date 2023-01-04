@@ -1,7 +1,7 @@
 
 using Distributions, Random
 using Suppressor
-
+using CSV, DataFrames
 
 """
 equivalence classes:
@@ -18,27 +18,17 @@ equivalence classes:
 +---------------+----------------------+-----------------------------------+---------+
 """
 
-function generate_combinations()
-    eq_classes_combinations::Vector{NTuple{7, Int64}} = Random.shuffle(
-        vcat(collect(Iterators.product(1:3, 1:3, 1:3, 1:3, 1:3, 1:3, 1:3))...)
-    )
-    eq_classes_combinations = eq_classes_combinations[
-        1:Int(round(length(eq_classes_combinations)/10))
-    ]
-end
-
-convertor_as = (i::Integer) -> [:Sheep, :Wolf, :asd][i]
-convertor_se = (i::Integer) -> [:Male, :Female, :asd][i]
+convertor_s = s -> Symbol(s)
 convertor_id = (i::Integer) -> [rand(DiscreteUniform(-10, 10)), randn(), randstring(10)][i]
 convertor_en = (i::Integer) -> [abs(randn()), -abs(randn()), randstring(10)][i]
 convertor_pr = (i::Integer) -> [abs(randn()), 2+randn()*100, randstring(10)][i]
 
-convertor_bv = (v::NTuple{7, Int64}) -> (all(x -> x == 1, v[3:end]) && !any(x -> x == 3, v[1:2]))
+convertor_bv = (v::DataFrameRow) -> (all(x -> x == 1, v[3:end]) && !any(x -> x == "randstr", v[1:2]))
 
-function convertor(v::NTuple{7, Int64})
+function convertor(v::DataFrameRow)
     d = Dict()
-    d[:A] = convertor_as(v[1])
-    d[:S] = convertor_se(v[2])
+    d[:A] = convertor_s(v[1])
+    d[:S] = convertor_s(v[2])
     d[:id] = convertor_id(v[3]) 
     d[:energy] = convertor_en(v[4]) 
     d[:Δenergy] = convertor_en(v[5])
@@ -47,16 +37,23 @@ function convertor(v::NTuple{7, Int64})
     CreateAnimal(d)
 end
 
-@testset "animal: creating combinations" begin
-    gc::Vector{NTuple{7, Int64}} = generate_combinations()
-    for c::NTuple{7, Int64} in gc
-        if convertor_bv(c)
-            @test_nowarn convertor(c)
-        else
-            @test convertor(c) == Nothing
+function animal_coverage(filename::String)
+    testset_name::String = string("animal: ", filename, " coverage")
+    @testset "$testset_name" begin
+        gc::DataFrame = CSV.read(filename, DataFrame; delim=',')
+        for c::DataFrameRow in eachrow(gc)
+            if convertor_bv(c) 
+                @test_nowarn convertor(c)
+            else 
+                @test convertor(c) == Nothing
+            end
         end
     end
 end
+
+animal_coverage("csv/Animal-2way.csv")
+animal_coverage("csv/Animal-3way.csv")
+animal_coverage("csv/Animal-mixed.csv")
 
 @testset "animal: special occurences" begin
     @test CreateAnimal(Dict(:A => :Grass, :S => :Male, 

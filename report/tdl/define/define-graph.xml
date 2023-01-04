@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<graph description="" id="5" linkage="" name="g" type="ORIENTED_GRAPH" version="">
+    <node description="" height="25.0" id="2" name="START" priority="" style="STYLE_START" width="70.0" xpos="150.0" ypos="50.0"/>
+    <edge description="" id="5" name="1" priority="" source="2" target="4"/>
+    <edge description="" id="6" name="2" priority="" source="2" target="3"/>
+    <node description="" height="40.0" id="3" name="define_animal" priority="(not defined)" style="STYLE_NODE" width="40.0" xpos="90.0" ypos="130.0"/>
+    <edge description="" id="15" name="5" priority="" source="3" target="8"/>
+    <edge description="" id="16" name="6" priority="" source="3" target="7"/>
+    <node description="" height="40.0" id="4" name="define_plant" priority="(not defined)" style="STYLE_NODE" width="40.0" xpos="260.0" ypos="120.0"/>
+    <edge description="" id="13" name="3" priority="" source="4" target="10"/>
+    <edge description="" id="14" name="4" priority="" source="4" target="9"/>
+    <node description="" height="40.0" id="7" name="Sheep" priority="(not defined)" style="STYLE_NODE" width="40.0" xpos="30.0" ypos="200.0"/>
+    <edge description="" id="19" name="9" priority="" source="7" target="12"/>
+    <edge description="" id="20" name="10" priority="" source="7" target="11"/>
+    <node description="" height="40.0" id="8" name="Wolf" priority="(not defined)" style="STYLE_NODE" width="40.0" xpos="160.0" ypos="200.0"/>
+    <edge description="" id="17" name="7" priority="" source="8" target="11"/>
+    <edge description="" id="18" name="8" priority="" source="8" target="12"/>
+    <node description="" height="40.0" id="9" name="Grass" priority="(not defined)" style="STYLE_NODE" width="40.0" xpos="190.0" ypos="140.0"/>
+    <edge description="" id="23" name="13" priority="" source="9" target="3"/>
+    <edge description="" id="29" name="18" priority="" source="9" target="27"/>
+    <node description="" height="40.0" id="10" name="Mushroom" priority="(not defined)" style="STYLE_NODE" width="40.0" xpos="290.0" ypos="240.0"/>
+    <edge description="" id="24" name="14" priority="" source="10" target="3"/>
+    <edge description="" id="28" name="17" priority="" source="10" target="27"/>
+    <node description="" height="40.0" id="11" name="Male" priority="(not defined)" style="STYLE_NODE" width="40.0" xpos="100.0" ypos="360.0"/>
+    <edge description="" id="21" name="11" priority="" source="11" target="3"/>
+    <edge description="" id="25" name="15" priority="" source="11" target="4"/>
+    <edge description="" id="31" name="20" priority="" source="11" target="27"/>
+    <node description="" height="40.0" id="12" name="Female" priority="(not defined)" style="STYLE_NODE" width="40.0" xpos="180.0" ypos="330.0"/>
+    <edge description="" id="22" name="12" priority="" source="12" target="3"/>
+    <edge description="" id="26" name="16" priority="" source="12" target="4"/>
+    <edge description="" id="30" name="19" priority="" source="12" target="27"/>
+    <node description="" height="40.0" id="27" name="define_world" priority="(not defined)" style="STYLE_NODE" width="40.0" xpos="290.0" ypos="370.0"/>
+</graph>

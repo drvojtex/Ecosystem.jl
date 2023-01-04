@@ -29,7 +29,8 @@ end
  
 Base.size(a::Plant) = a.size
 max_size(a::Plant) = a.max_size
-grow!(a::Plant) = a.size += 1
+grow!(a::Plant) = size(a) != max_size(a) ? a.size += 1 : a.size
+grow!(a::Plant, w::World) = grow!(a)
  
 # constructor for all Plant{<:PlantSpecies} callable as PlantSpecies(...)
 (A::Type{<:PlantSpecies})(id, s, m) = Plant{A}(id,s,m)

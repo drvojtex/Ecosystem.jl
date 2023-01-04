@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<graph description="" id="5" linkage="" name="g" type="ORIENTED_GRAPH" version="">
+    <node description="" height="25.0" id="32" name="START" priority="" style="STYLE_START" width="70.0" xpos="210.0" ypos="70.0"/>
+    <edge description="" id="39" name="1" priority="" source="32" target="34"/>
+    <edge description="" id="40" name="2" priority="" source="32" target="33"/>
+    <edge description="" id="41" name="3" priority="" source="32" target="35"/>
+    <edge description="" id="42" name="4" priority="" source="32" target="36"/>
+    <node description="" height="40.0" id="33" name="Sheep1" priority="(not defined)" style="STYLE_NODE" width="40.0" xpos="200.0" ypos="120.0"/>
+    <edge description="" id="49" name="11" priority="" source="33" target="37"/>
+    <node description="" height="40.0" id="34" name="Wolf" priority="(not defined)" style="STYLE_NODE" width="40.0" xpos="90.0" ypos="130.0"/>
+    <edge description="" id="48" name="10" priority="" source="34" target="52"/>
+    <node description="" height="40.0" id="35" name="Grass" priority="(not defined)" style="STYLE_NODE" width="40.0" xpos="290.0" ypos="120.0"/>
+    <edge description="" id="44" name="6" priority="" source="35" target="38"/>
+    <node description="" height="40.0" id="36" name="Mushroom" priority="(not defined)" style="STYLE_NODE" width="40.0" xpos="410.0" ypos="130.0"/>
+    <edge description="" id="43" name="5" priority="" source="36" target="38"/>
+    <node description="" height="40.0" id="37" name="EatsS" priority="(not defined)" style="STYLE_NODE" width="40.0" xpos="240.0" ypos="200.0"/>
+    <edge description="" id="50" name="12" priority="" source="37" target="35"/>
+    <edge description="" id="51" name="13" priority="" source="37" target="36"/>
+    <node description="" height="40.0" id="38" name="Grow" priority="(not defined)" style="STYLE_NODE" width="40.0" xpos="360.0" ypos="200.0"/>
+    <edge description="" id="45" name="7" priority="" source="38" target="36"/>
+    <edge description="" id="46" name="8" priority="" source="38" target="35"/>
+    <edge description="" id="47" name="9" priority="" source="38" target="34"/>
+    <node description="" height="40.0" id="52" name="EatsW" priority="(not defined)" style="STYLE_NODE" width="40.0" xpos="80.0" ypos="200.0"/>
+    <edge description="" id="55" name="15" priority="" source="52" target="54"/>
+    <node description="" height="40.0" id="54" name="Sheep2" priority="(not defined)" style="STYLE_NODE" width="40.0" xpos="150.0" ypos="220.0"/>
+    <edge description="" id="56" name="16" priority="" source="54" target="57"/>
+    <node description="" height="40.0" id="57" name="AgentCount" priority="(not defined)" style="STYLE_NODE" width="40.0" xpos="260.0" ypos="270.0"/>
+</graph>

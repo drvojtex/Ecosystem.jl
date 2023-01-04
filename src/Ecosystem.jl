@@ -8,6 +8,7 @@ export World
 export Species, PlantSpecies, AnimalSpecies, Grass, Sheep, Wolf, Mushroom
 export Sex, Female, Male
 export Agent, Plant, Animal
+export grow!
 export agent_step!, eat!, eats, find_food, reproduce!, world_step!
 export energy, energy!, incr_energy!, Δenergy, reprprob, foodprob, decr_energy!
 export every_nth, agent_count, simulate!
